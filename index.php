@@ -1,9 +1,11 @@
 <?php
 
 require './vendor/autoload.php';
+require './controllers/IndexController.php';
 require './controllers/BookingsController.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\ConfigureRoutes $r) {
+  $r->get('/', 'IndexController#index');
   $r->get('/bookings', 'BookingsController#get_all_bookings');
   $r->get('/bookings/{id:\d+}', 'BookingsController#get_booking');
 });
